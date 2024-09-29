@@ -5,13 +5,11 @@ import java.time.temporal.ChronoUnit;
 public class DetallePrestamo {
     
     private int cantidad;
-    private Prestamo prestamo;
     private Libro libro;
     private double subTotal;
 
-    public DetallePrestamo(int cantidad, Prestamo prestamo, Libro libro){
+    public DetallePrestamo(int cantidad, Libro libro){
         this.cantidad=cantidad;
-        this.prestamo=prestamo;
         this.libro=libro;
         this.subTotal=calcularSubtotal();
     }
@@ -45,14 +43,6 @@ public class DetallePrestamo {
         this.cantidad = cantidad;
     }
 
-    public Prestamo getPrestamo() {
-        return prestamo;
-    }
-
-    public void setPrestamo(Prestamo prestamo) {
-        this.prestamo = prestamo;
-    }
-
     public Libro getLibro() {
         return libro;
     }
@@ -71,7 +61,7 @@ public class DetallePrestamo {
 
     @Override
     public String toString() {
-        return "DetallePrestamo [cantidad=" + cantidad + ", prestamo=" + prestamo + ", libro=" + libro + ", subTotal="
+        return "DetallePrestamo [cantidad=" + cantidad + ", libro=" + libro + ", subTotal="
                 + subTotal + "]";
     }
     
