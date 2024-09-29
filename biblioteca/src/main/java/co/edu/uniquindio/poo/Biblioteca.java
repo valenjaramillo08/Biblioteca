@@ -218,7 +218,44 @@ public class Biblioteca {
     }
 
 
+     /**
+     * Metodo para mostrar el total monetario del prestamo y regresar la cantidad de libros al inventario
+     * @param codigo
+     * @param nombreLibro
+     */
+    public void devolucionPrestamo(int codigo,int cantidad,  Libro libro){
+        for (Prestamo prestamo : prestamos) {
+            
+            if(prestamo.getCodigo()==codigo){
+                System.out.println("el vlaor del prestamos es: " + prestamo.getTotal());
+        
+                for (DetallePrestamo detallePrestamo : prestamo.getDetallePrestamos()){
+                    if(detallePrestamo.getLibro().getCodigo().equals(libro.getCodigo())){
+                      libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() + cantidad);
+                    }
+                }    
+            }
+        }   
+    }
 
+    /**
+     * Metodo para hallar la cantidad de prestamos que ha tenido cada libro
+     * @param titulo
+     * @return
+     */
+    public int cantidadPrestamos(Libro libro){
+        int cont = 0;
+        for (Prestamo prestamo : prestamos) {
+            for (DetallePrestamo detallePrestamo : prestamo.getDetallePrestamos()) {
+                if(detallePrestamo.getLibro().getCodigo().equals(libro.getCodigo())){
+
+                    cont++;
+
+                }
+            }
+        }
+        return cont;
+    }
 
 
 

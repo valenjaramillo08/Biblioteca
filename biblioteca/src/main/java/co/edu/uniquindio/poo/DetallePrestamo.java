@@ -11,9 +11,30 @@ public class DetallePrestamo {
         this.cantidad=cantidad;
         this.prestamo=prestamo;
         this.libro=libro;
-        //this.subTotal=calcularSubtotal();
+        this.subTotal=calcularSubtotal();
     }
 
+    /**
+     * Metodo para hallar el subtotal de cada detalle 
+     * @return
+     */
+    public double calcularSubtotal(){
+        
+        double subtotal = cantidad*calcularValor();
+        return subtotal;
+    }
+
+    /**
+     * Metodo para hallar el valor total de cada libro prestado 
+     * @return
+     */
+    public double calcularValor (P){
+        
+        double valorDia = 2000;
+        long diasPrestamo = ChronoUnit.DAYS.between(prestamo.getFechaPrestamo(), prestamo.getFechaEntrega());
+        double valorTotal = valorDia *diasPrestamo;
+        return valorTotal;
+    }
     public int getCantidad() {
         return cantidad;
     }
