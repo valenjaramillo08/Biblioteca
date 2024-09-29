@@ -223,10 +223,10 @@ public class Biblioteca {
      * @param codigo
      * @param nombreLibro
      */
-    public void devolucionPrestamo(int codigo,int cantidad,  Libro libro){
+    public void devolucionPrestamo(String codigo,int cantidad,  Libro libro){
         for (Prestamo prestamo : prestamos) {
             
-            if(prestamo.getCodigo()==codigo){
+            if(prestamo.getCodigo().equals(codigo)){
                 System.out.println("el vlaor del prestamos es: " + prestamo.getTotal());
         
                 for (DetallePrestamo detallePrestamo : prestamo.getDetallePrestamos()){

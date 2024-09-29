@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 public class Prestamo {
 
-    private int codigo;
+    private String codigo;
     private LocalDate fechaPrestamo, fechaEntrega;
     private double total;
     private Bibliotecario bibliotecario;
@@ -21,9 +21,9 @@ public class Prestamo {
      * @param bibliotecario
      * @param estudiante
      */
-    public Prestamo(LocalDate fechaPrestamo, LocalDate fechaEntrega, Bibliotecario bibliotecario,
+    public Prestamo(String codigo, LocalDate fechaPrestamo, LocalDate fechaEntrega, Bibliotecario bibliotecario,
             Estudiante estudiante) {
-        this.codigo = nuevoCodigo();
+        this.codigo = codigo; //nuevoCodigo();
         this.fechaEntrega = fechaEntrega;
         this.fechaPrestamo = fechaPrestamo;
         detallePrestamos = new LinkedList<>();
@@ -39,13 +39,13 @@ public class Prestamo {
      * numerico para que se evite el error de repetir codigos
      */
 
-     public int nuevoCodigo(){
+    /*public int nuevoCodigo(){
         int cont = 0;
         if(cont >= 0){
             cont ++;
         }
         return cont;
-    }
+    }*/
     
     /**
      * Metodo para calcular el total del prestamo realizado
@@ -63,7 +63,7 @@ public class Prestamo {
      * Metodo para obtener el codigo del prestamo 
      * @return
      */
-    public int getCodigo() {
+    public String getCodigo() {
         return codigo;
     }
 
@@ -71,7 +71,7 @@ public class Prestamo {
      * Metodo para modificar el codigo
      * @param codigo
      */
-    public void setCodigo(int codigo) {
+    public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 

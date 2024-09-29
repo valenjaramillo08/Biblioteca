@@ -1,5 +1,7 @@
 package co.edu.uniquindio.poo;
 
+import java.time.temporal.ChronoUnit;
+
 public class DetallePrestamo {
     
     private int cantidad;
@@ -28,7 +30,7 @@ public class DetallePrestamo {
      * Metodo para hallar el valor total de cada libro prestado 
      * @return
      */
-    public double calcularValor (P){
+    public double calcularValor (){
         
         double valorDia = 2000;
         long diasPrestamo = ChronoUnit.DAYS.between(prestamo.getFechaPrestamo(), prestamo.getFechaEntrega());
