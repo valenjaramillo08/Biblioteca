@@ -213,7 +213,7 @@ public class Biblioteca {
      * Metodo que nos muestra los detalles de un prestamo
      * @return
      */
-     public String datosPrestamo(String codigo){
+    public String datosPrestamo(String codigo){
         String mensaje="";
         for (Prestamo prestamo: prestamos) {
             if(prestamo.getCodigo().equals(codigo)){
@@ -291,67 +291,67 @@ public class Biblioteca {
         }
         return total;
     }
+    /**
     * Metodo para hallar la cantidad de prestamos que ha tenido cada libro
     * @param titulo
     * @return
     */
-   public int cantidadPrestamos(Libro libro){
-       int cont = 0;
-       for (Prestamo prestamo : prestamos) {
-           for (DetallePrestamo detallePrestamo : prestamo.getDetallePrestamos()) {
-               if(detallePrestamo.getLibro().getCodigo().equals(libro.getCodigo())){
+    public int cantidadPrestamos(Libro libro){
+        int cont = 0;
+        for (Prestamo prestamo : prestamos) {
+            for (DetallePrestamo detallePrestamo : prestamo.getDetallePrestamos()) {
+                if(detallePrestamo.getLibro().getCodigo().equals(libro.getCodigo())){
+                    cont++;
 
-                   cont++;
-
-               }
-           }
-       }
-       return cont;
-   }
-   /**
+                }
+            }
+        }
+        return cont;
+    }
+    /**
    * Meetodo para verificar la existencia de ejemplares disponibles para prestar de un libro
    * @param codigo
    * @return
    */
-  public boolean verificarEstadoLibro(String codigo) {
-      boolean centinela = false;
-      for (Libro libro : libros) {
-          if (libro.getCodigo().equals(codigo)){
+    public boolean verificarEstadoLibro(String codigo) {
+        boolean centinela = false;
+        for (Libro libro : libros) {
+        if (libro.getCodigo().equals(codigo)){
 
-              if (libro.getUnidadesDisponibles() > 0) {
-              centinela = true;
-              }
-          }
-      }
-      return centinela;
-  }
+            if (libro.getUnidadesDisponibles() > 0) {
+            centinela = true;
+            }
+        }
+    }
+    return centinela;
+}
 
-  /**
+    /**
    * Metodo para disminuir las cantidades disponibles del libro
    * @param cantidad
    */
-  public void modificarCantidad(Libro libro, int cantidad){
-      if(verificarEstadoLibro(libro.getCodigo())){
-          if (libro.getUnidadesDisponibles()> cantidad){
+public void modificarCantidad(Libro libro, int cantidad){
+    if(verificarEstadoLibro(libro.getCodigo())){
+        if (libro.getUnidadesDisponibles()> cantidad){
 
-              libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - cantidad);
-          }
+            libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - cantidad);
+        }
 
-          else if(libro.getUnidadesDisponibles() == cantidad){
-              libro.setEstado(false);
-              libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - cantidad);
-          }
+        else if(libro.getUnidadesDisponibles() == cantidad){
+            libro.setEstado(false);
+            libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - cantidad);
+        }
 
-          else{
-              System.out.println("Las unidades disponibles no son suficientes para realizar el prestamo");
-          }
+        else{
+            System.out.println("Las unidades disponibles no son suficientes para realizar el prestamo");
+        }
 
 
-      }
-      else{
-          System.out.println("El estado del libro actualmente esta en -no disponible-");
-      }
-  }
+    }
+    else{
+        System.out.println("El estado del libro actualmente esta en -no disponible-");
+    }
+}
 
 
 
