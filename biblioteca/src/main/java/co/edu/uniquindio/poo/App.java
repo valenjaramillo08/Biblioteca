@@ -48,9 +48,6 @@ biblioteca.agregarEstudiante(estudiante2);
 biblioteca.agregarLibro(libro1);
 biblioteca.agregarLibro(libro2);
 
-//agregando prestamo a la biblioteca
-biblioteca.agregarPrestamo(prestamo1);
-biblioteca.agregarPrestamo(prestamo2);
 
 //agregando prestamo
 biblioteca.agregarPrestamo(prestamo2);
