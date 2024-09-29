@@ -77,9 +77,6 @@ public class DetallePrestamo {
     
 
 
-    /*public double calcularSubtotal(){
-        return cantidad*libro.get
-    }*/
 
 
 
