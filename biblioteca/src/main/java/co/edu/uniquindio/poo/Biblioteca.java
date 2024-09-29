@@ -1,5 +1,7 @@
 package co.edu.uniquindio.poo;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -29,6 +31,31 @@ public class Biblioteca {
             bibliotecarios.add(bibliotecario);
         }
     }
+
+
+    public double calcularPorcentajeBibliotecario(Bibliotecario bibliotecario){
+        LocalDate hoy = LocalDate.now();
+        Period antiguedad = Period.between(bibliotecario.getFechaIngreso(), hoy);
+        int aniosAntiguedad = antiguedad.getYears();
+        double porcentajeAnios= (0.02*aniosAntiguedad);
+        return porcentajeAnios;
+
+    }
+    public double salarioBibliotecarios(){
+        double salarioTotal=0.0;
+
+        for (Bibliotecario bibliotecario : bibliotecarios) {
+            for (Prestamo prestamo : prestamos) {
+                if(prestamo.getBibliotecario().getCedula().equals(bibliotecario.getCedula())){
+                    salarioTotal+= prestamo.getTotal() * (0.2 + calcularPorcentajeBibliotecario(bibliotecario));
+                }
+                
+            }
+        }
+        return salarioTotal;
+    }
+
+    
 
     /**
      * Metodo para verificar la existencia de un bibliotecario en la biblioteca 
@@ -263,8 +290,33 @@ public class Biblioteca {
             System.out.println("El estado del libro actualmente esta en -no disponible-");
         }
     }
+    /**
+     * Metodo para contar los prestamos de cada bibliotecario
+     * @param cedula
+     * @return
+     */
+    public int prestamosBibliotecario(String cedula){
+        int contador=0;
+        for (Prestamo prestamo : prestamos) {
+            if (prestamo.getBibliotecario().getCedula().equals(cedula)) {
+                contador++;
+                }
+        }
+        return contador;
+    }
 
-        
+    /**
+     * Metodo que muestra el total de dinero recaudado por la empresa
+     * @return
+     */
+    public double dineroRecaudado(){
+        double total=0.0;
+        for (Prestamo prestamo : prestamos) {
+            total+=prestamo.getTotal();
+            
+        }
+        return total;
+    }
 
 
 
