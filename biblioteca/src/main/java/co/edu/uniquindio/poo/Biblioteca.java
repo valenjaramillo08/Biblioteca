@@ -46,7 +46,7 @@ public class Biblioteca {
     }
 
     /**
-     * Metodo para agregar a un bibliotecario 
+     * Metodo para agregar un prestamo
      * @param prestamo
      */
     public void agregarPrestamo(Prestamo prestamo) {
@@ -219,6 +219,52 @@ public class Biblioteca {
 
 
 
+     /**
+     * Meetodo para verificar la existencia de ejemplares disponibles para prestar de un libro 
+     * @param codigo
+     * @return
+     */
+    public boolean verificarEstadoLibro(String codigo) {
+        boolean centinela = false;
+        for (Libro libro : libros) {
+            if (libro.getCodigo().equals(codigo)){
+
+                if (libro.getUnidadesDisponibles() > 0) {
+                centinela = true;
+                }
+            }
+        }
+        return centinela;
+    } 
+
+    /**
+     * Metodo para disminuir las cantidades disponibles del libro
+     * @param cantidad
+     */
+    public void modificarCantidad(Libro libro, int cantidad){
+        if(verificarEstadoLibro(libro.getCodigo())){
+            if (libro.getUnidadesDisponibles()> cantidad){
+          
+                libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - cantidad);
+            }
+            
+            else if(libro.getUnidadesDisponibles() == cantidad){
+                libro.setEstado(false);
+                libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - cantidad);
+            }
+        
+            else{
+                System.out.println("Las unidades disponibles no son suficientes para realizar el prestamo");
+            }
+
+            
+        }
+        else{
+            System.out.println("El estado del libro actualmente esta en -no disponible-");
+        }
+    }
+
+        
 
 
 
