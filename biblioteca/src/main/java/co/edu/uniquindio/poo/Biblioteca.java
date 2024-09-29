@@ -33,7 +33,7 @@ public class Biblioteca {
     /**
      * Metodo para verificar la existencia de un bibliotecario en la biblioteca 
      * @param cedula
-     * @return
+     * @return centinela
      */
     public boolean verificarBibliotecario(String cedula) {
         boolean centinela = false;
@@ -58,7 +58,7 @@ public class Biblioteca {
     /**
      * Metodo para verificar la existencia de un prestamo
      * @param codigo
-     * @return
+     * @return centinela
      */
     public boolean verificarPrestamo(String codigo) {
         boolean centinela = false;
@@ -83,7 +83,7 @@ public class Biblioteca {
     /**
      * Meetodo para verificar la existencia de un ejemplar de un libro 
      * @param codigo
-     * @return
+     * @return centinela
      */
     public boolean verificarLibro(String codigo) {
         boolean centinela = false;
@@ -108,7 +108,7 @@ public class Biblioteca {
     /**
      * Metodo para verificar la existencia de un estudiante 
      * @param cedula
-     * @return
+     * @return centinela
      */
     public boolean verificarEstudiante(String cedula) {
         boolean centinela = false;
@@ -120,24 +120,101 @@ public class Biblioteca {
         return centinela;
     }
 
-    
+    /**
+     * Metodo para agregarle un prestamo a un estudiante
+     * @param codigo
+     * @return
+     */
 
     /**
      * Metodo para buscar los datos de un libro mediante su codigo unico 
      * @param codigo
-     * @return
+     * @return mensaje
      */
     public String datosLibro(String codigo){
         String mensaje="";
         for (Libro libro : libros) {
             if(libro.getCodigo().equals(codigo)){
-                mensaje= libro.getDetalles();
+                mensaje= libro.toString();
             }
             else{
                 mensaje= "El libro no se encontro.";
             }
         }
         return  mensaje;
+    }
+
+    /**
+     * Metodo que muestra el estudiante con mas prestamos
+     * @return
+     */
+    public String estudianteConMasPrestamos(){
+        String nombreComun="";
+        int contadorPrincipal=0;
+
+        for (Prestamo prestamo: prestamos) {
+            int contador=0;
+            String nombreAnalisis = prestamo.getEstudiante().getNombre();
+
+            for (Prestamo prestamo2 : prestamos) {
+                if(prestamo2.getEstudiante().getNombre().equals(nombreAnalisis)){
+                    contador ++;
+                }
+
+            }
+            if(contadorPrincipal < contador){
+                nombreComun= nombreAnalisis;
+                contadorPrincipal= contador;
+            }
+            
+        }
+        return nombreComun;
+    }
+    /**
+     * Metodo para contar los prestamos actuales en la Biblioteca
+     * @return cont
+     */
+    public int cantidadPrestamos(){
+        int cont = 0;
+        for (Prestamo prestamo: prestamos) {
+                cont++;
+        }
+        return cont;
+    }
+
+        /**
+     * Metodo que nos muestra los detalles de un prestamo
+     * @return
+     */
+     public String datosPrestamo(String codigo){
+        String mensaje="";
+        for (Prestamo prestamo: prestamos) {
+            if(prestamo.getCodigo().equals(codigo)){
+                mensaje= prestamo.toString();
+            }
+            else{
+                mensaje= "El prestamo no se encontro.";
+            }
+        }
+        return  mensaje;
+    }
+
+    public void reemplazarLibro(String codigo, Libro libroNuevo){
+
+        for (Libro libro : libros) {
+            if(codigo.equals(libro.getCodigo())){
+                libro.setAutor(libroNuevo.getAutor());
+                libro.setEditorial(libroNuevo.getEditorial());
+                libro.setEstado(libroNuevo.isEstado());
+                libro.setFechaPublicacion(libroNuevo.getFechaPublicacion());
+                libro.setIsbn(libroNuevo.getIsbn());
+                libro.setTitulo(libroNuevo.getTitulo());
+                libro.setUnidadesDisponibles(libroNuevo.getUnidadesDisponibles());
+            }
+            else{
+                System.out.println("El libro no fue encontrado para modificarlo");
+            }            
+        }
     }
 
 

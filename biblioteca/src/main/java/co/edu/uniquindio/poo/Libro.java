@@ -29,10 +29,6 @@ public class Libro {
         this.unidadesDisponibles=unidadesDisponibles;
         this.fechaPublicacion=fechaPublicacion;
     }
-
-    public String getDetalles(){
-        return "Código: " + codigo + ", ISBN: " + isbn + ", Autor: " + autor + ", Título: " + titulo + ", Editorial: " + editorial + ", Fecha: " + fechaPublicacion + ", Unidades disponibles: " + unidadesDisponibles;
-    }
     
 
     /**

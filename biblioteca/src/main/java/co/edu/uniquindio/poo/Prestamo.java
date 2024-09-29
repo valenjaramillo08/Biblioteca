@@ -30,6 +30,10 @@ public class Prestamo {
         this.total = calcularTotal();
     }
 
+    public void agregarPrestamo(DetallePrestamo detallePrestamo) {
+            detallePrestamos.add(detallePrestamo);
+    }
+
     /**
      * Metodo para calcular el total del prestamo realizado
      * @return
