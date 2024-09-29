@@ -23,7 +23,7 @@ public class Prestamo {
      */
     public Prestamo(String codigo, LocalDate fechaPrestamo, LocalDate fechaEntrega, Bibliotecario bibliotecario,
             Estudiante estudiante) {
-        this.codigo = codigo;
+        this.codigo = codigo; //nuevoCodigo();
         this.fechaEntrega = fechaEntrega;
         this.fechaPrestamo = fechaPrestamo;
         detallePrestamos = new LinkedList<>();
@@ -34,6 +34,19 @@ public class Prestamo {
             detallePrestamos.add(detallePrestamo);
     }
 
+    /**
+     * Metodo para que el codigo del prestamo vaya aumentando en orden 
+     * numerico para que se evite el error de repetir codigos
+     */
+
+    /*public int nuevoCodigo(){
+        int cont = 0;
+        if(cont >= 0){
+            cont ++;
+        }
+        return cont;
+    }*/
+    
     /**
      * Metodo para calcular el total del prestamo realizado
      * @return

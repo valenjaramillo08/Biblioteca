@@ -1,7 +1,9 @@
 package co.edu.uniquindio.poo;
 
+import java.time.temporal.ChronoUnit;
+
 public class DetallePrestamo {
-    
+    private Prestamo prestamo;
     private int cantidad;
     private Libro libro;
     private double subTotal;
@@ -9,7 +11,37 @@ public class DetallePrestamo {
     public DetallePrestamo(int cantidad, Libro libro){
         this.cantidad=cantidad;
         this.libro=libro;
-        //this.subTotal=calcularSubtotal();
+        this.subTotal=calcularSubtotal();
+    }
+
+    /**
+     * Metodo para hallar el subtotal de cada detalle 
+     * @return
+     */
+    public double calcularSubtotal(){
+        
+        double subtotal = cantidad*calcularValor();
+        return subtotal;
+    }
+
+    /**
+     * Metodo para hallar el valor total de cada libro prestado 
+     * @return
+     */
+    public double calcularValor (){
+        
+        double valorDia = 2000;
+        long diasPrestamo = ChronoUnit.DAYS.between(prestamo.getFechaPrestamo(), prestamo.getFechaEntrega());
+        double valorTotal = valorDia *diasPrestamo;
+        return valorTotal;
+    }
+
+    public Prestamo getPrestamo() {
+        return prestamo;
+    }
+
+    public void setPrestamo(Prestamo prestamo) {
+        this.prestamo = prestamo;
     }
 
     public int getCantidad() {
@@ -38,9 +70,10 @@ public class DetallePrestamo {
 
     @Override
     public String toString() {
-        return "DetallePrestamo [cantidad=" + cantidad + ", libro=" + libro + ", subTotal="
+        return "DetallePrestamo [prestamo=" + prestamo + ", cantidad=" + cantidad + ", libro=" + libro + ", subTotal="
                 + subTotal + "]";
     }
+    
     
 
 
