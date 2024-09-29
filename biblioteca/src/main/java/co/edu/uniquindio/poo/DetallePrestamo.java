@@ -3,7 +3,7 @@ package co.edu.uniquindio.poo;
 import java.time.temporal.ChronoUnit;
 
 public class DetallePrestamo {
-    
+    private Prestamo prestamo;
     private int cantidad;
     private Libro libro;
     private double subTotal;
@@ -35,6 +35,15 @@ public class DetallePrestamo {
         double valorTotal = valorDia *diasPrestamo;
         return valorTotal;
     }
+
+    public Prestamo getPrestamo() {
+        return prestamo;
+    }
+
+    public void setPrestamo(Prestamo prestamo) {
+        this.prestamo = prestamo;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
@@ -61,9 +70,10 @@ public class DetallePrestamo {
 
     @Override
     public String toString() {
-        return "DetallePrestamo [cantidad=" + cantidad + ", libro=" + libro + ", subTotal="
+        return "DetallePrestamo [prestamo=" + prestamo + ", cantidad=" + cantidad + ", libro=" + libro + ", subTotal="
                 + subTotal + "]";
     }
+    
     
 
 
