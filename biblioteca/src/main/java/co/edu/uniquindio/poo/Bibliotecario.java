@@ -23,7 +23,9 @@ public class Bibliotecario extends Persona {
         prestamos = new LinkedList<>();
     }
 
-
+    public void agregarPrestamo(Prestamo miPrestamo){
+        prestamos.add(miPrestamo);
+    }
     /**
      * Metodo para obtener la fecha de ingreso del bibliotecario 
      * @return
@@ -59,7 +61,7 @@ public class Bibliotecario extends Persona {
 
     @Override
     public String toString() {
-        return "Bibliotecario [fechaIngreso=" + fechaIngreso + ", prestamos=" + prestamos + "]";
+        return "Bibliotecario [fechaIngreso=" + fechaIngreso  + "]";
     }
 
 }

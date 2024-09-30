@@ -12,6 +12,7 @@ public class Prestamo {
     private Bibliotecario bibliotecario;
     private Estudiante estudiante;
     private Collection<DetallePrestamo> detallePrestamos;
+    private Collection<Libro> libros;
 
     /**
      * Metodo constructor de la clase Prestamo
@@ -26,14 +27,92 @@ public class Prestamo {
         this.codigo = codigo; //nuevoCodigo();
         this.fechaEntrega = fechaEntrega;
         this.fechaPrestamo = fechaPrestamo;
+        this.bibliotecario=bibliotecario;
+        this.estudiante=estudiante;
         detallePrestamos = new LinkedList<>();
+        libros = new LinkedList<>();
         this.total = calcularTotal();
     }
 
     public void agregarPrestamo(DetallePrestamo detallePrestamo) {
+
+        if(modificarCantidad(detallePrestamo.getLibro(), detallePrestamo.getCantidad())){
             detallePrestamos.add(detallePrestamo);
+        }
+        else{
+            System.out.println("No se pudo agregar el libro");
+        }
+            
+    }
+    /**
+     * Meetodo para verificar la existencia de ejemplares disponibles para prestar de un libro
+     * @param codigo
+     * @return
+     */
+    public boolean verificarEstadoLibro(String codigo) {
+        boolean centinela = false;
+        for (Libro libro: libros) {
+            if (libro.getCodigo().equals(codigo)){
+                if (libro.getUnidadesDisponibles() > 0) {
+                    centinela = true;
+                }
+            }
+        }
+        return centinela;
     }
 
+/**
+* Metodo para disminuir las cantidades disponibles del libro
+* @param cantidad
+*/
+public boolean modificarCantidad(Libro libro, int cantidad){
+    boolean bandera = false;
+    if(verificarEstadoLibro(libro.getCodigo())){
+        if (libro.getUnidadesDisponibles()> cantidad){
+
+            libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - cantidad);
+            bandera = true;
+        }
+
+        else if(libro.getUnidadesDisponibles() == cantidad){
+            libro.setEstado(false);
+            libro.setUnidadesDisponibles(libro.getUnidadesDisponibles() - cantidad);
+            bandera = true;
+        }
+
+        else{
+            System.out.println("Las unidades disponibles no son suficientes para realizar el prestamo");
+        }
+    }
+    else{
+        System.out.println("El estado del libro actualmente esta en -no disponible-");
+    }
+    return bandera;
+}
+    /**
+     * Metodo para agregar libro a la biblioteca
+     * @param libro
+     */
+    public void agregarLibro(Libro libro) {
+        if (!verificarLibro(libro.getCodigo())) {
+            libros.add(libro);
+        }
+    }
+
+    /**
+     * Meetodo para verificar la existencia de un ejemplar de un libro
+     * @param codigo
+     * @return centinela
+     */
+    public boolean verificarLibro(String codigo) {
+        boolean centinela = false;
+        for (Libro libro: libros) {
+            if (libro.getCodigo().equals(codigo)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
     /**
      * Metodo para que el codigo del prestamo vaya aumentando en orden 
      * numerico para que se evite el error de repetir codigos
@@ -59,117 +138,71 @@ public class Prestamo {
         return total;
     }
 
-    /**
-     * Metodo para obtener el codigo del prestamo 
-     * @return
-     */
     public String getCodigo() {
         return codigo;
     }
 
-    /**
-     * Metodo para modificar el codigo
-     * @param codigo
-     */
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    /**
-     * Metodo para obtener la fecha del prestamo 
-     * @return
-     */
     public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
 
-    /**
-     * Metodo para modificar la fecha del prestamo 
-     * @param fechaPrestamo
-     */
     public void setFechaPrestamo(LocalDate fechaPrestamo) {
         this.fechaPrestamo = fechaPrestamo;
     }
 
-    /**
-     * Metodo para obtener la fecha de entrega 
-     * @return
-     */
     public LocalDate getFechaEntrega() {
         return fechaEntrega;
     }
 
-    /**
-     * Metodo para modificar la fecha de entrega 
-     * @param fechaEntrega
-     */
     public void setFechaEntrega(LocalDate fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
     }
 
-    /**
-     * Metodo para obtener el total del prestamo 
-     * @return
-     */
     public double getTotal() {
         return total;
     }
 
-    /**
-     * Metodo para modificar el total
-     * @param total
-     */
     public void setTotal(double total) {
         this.total = total;
     }
 
-    /**
-     * Metodo para obtener al bibliotecario encargado del prestamo
-     * @return
-     */
     public Bibliotecario getBibliotecario() {
         return bibliotecario;
     }
 
-    /**
-     * Metodo para modificar al bibliotecario encargado del prestamo 
-     * @param bibliotecario
-     */
     public void setBibliotecario(Bibliotecario bibliotecario) {
         this.bibliotecario = bibliotecario;
     }
 
-    /**
-     * Metodo para obtener el estudiante al que se le realiza el prestamo 
-     * @return
-     */
     public Estudiante getEstudiante() {
         return estudiante;
     }
 
-    /**
-     * Metodo para modificar al estudiante que se le realizo el prestamo 
-     * @param estudiante
-     */
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
 
-    /**
-     * Metodo para obtener la lista de detalles del prestamo 
-     * @return
-     */
     public Collection<DetallePrestamo> getDetallePrestamos() {
         return detallePrestamos;
     }
 
-    /**
-     * Metodo para modificar la lista de detalles 
-     * @param detallePrestamos
-     */
     public void setDetallePrestamos(Collection<DetallePrestamo> detallePrestamos) {
         this.detallePrestamos = detallePrestamos;
     }
+
+    public Collection<Libro> getLibros() {
+        return libros;
+    }
+
+
+    public void setLibros(Collection<Libro> libros) {
+        this.libros = libros;
+    }
+    
 
     @Override
     public String toString() {
