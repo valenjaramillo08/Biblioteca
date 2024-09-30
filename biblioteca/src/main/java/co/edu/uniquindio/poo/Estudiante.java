@@ -22,6 +22,9 @@ public class Estudiante extends Persona {
         prestamos = new LinkedList<>();
     }
 
+    public void agregarPrestamo(Prestamo miPrestamo){
+        prestamos.add(miPrestamo);
+    }
     /**
      * Metodo para determinar el estado del estudiante
      * @return
@@ -56,7 +59,7 @@ public class Estudiante extends Persona {
 
     @Override
     public String toString() {
-        return "Estudiante [" + super.toString() + "estado=" + estado + ", prestamos=" + prestamos + "]";
+        return "Estudiante [" + super.toString() + "estado=" + estado  + "]";
     }
 
 }
