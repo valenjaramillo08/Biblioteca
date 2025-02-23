@@ -11,6 +11,64 @@ public class Biblioteca {
     public List<Libro> listaLibros = new ArrayList<>();
     public List<Prestamo> listaPrestamos = new ArrayList<>();
 
+
+    public String datosLibro (String codigo){
+        for (Libro libro: listaLibros){
+    
+            if (libro.getIsbn().equals(codigo)){
+                return libro.toString(); 
+            }
+        }
+        return "El préstamo no se encontro";
+    }
+
+    public void agregarBibliotecario(Bibliotecario bibliotecario) {
+        if (!verificarBibliotecario(bibliotecario.getIdEmpleado())) {
+            listaBibliotecarios.add(bibliotecario);
+        }
+    }
+
+    public boolean verificarBibliotecario(String cedula) {
+        boolean centinela = false;
+        for (Bibliotecario bibliotecario : listaBibliotecarios) {
+            if (bibliotecario.getIdEmpleado().equals(cedula)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+
+    public void agregarLibro(Libro libro) {
+        if (!verificarLibro(libro.getIsbn())) {
+            listaLibros.add(libro);
+        }
+    }
+
+    public boolean verificarLibro(String codigo) {
+        boolean centinela = false;
+        for (Libro libro : listaLibros) {
+            if (libro.getIsbn().equals(codigo)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+
+    public int cantidadPrestamo (String nombre){
+        int contador = 0;
+
+    for (Prestamo prestamo : listaPrestamos) {
+        if (prestamo.getBibliotecario().toString().equals(nombre)) {
+            contador++;
+        }
+    }
+    System.out.println("Los préstamos realizados por el bibliotecario" +nombre+ "son:" + contador);
+
+    return contador; 
+
+}
+
+
     public Biblioteca(String nombre){
         this.nombre = nombre;
     }
