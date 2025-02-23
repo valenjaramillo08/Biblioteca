@@ -14,6 +14,21 @@ public class Miembro {
         this.idMiembro = idMiembro;
 
     }
+    public void agregarPrestamo(Prestamo prestamo) {
+        if (!verificarPrestamo(prestamo.getCodigoPrestamo())) {
+            listaPrestamos.add(prestamo);
+        }
+    }
+
+    public boolean verificarPrestamo(String codigoPrestamo) {
+        boolean centinela = false;
+        for (Prestamo prestamo: listaPrestamos) {
+            if (prestamo.getCodigoPrestamo().equals(codigoPrestamo)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
 
     public String getNombre() {
         return nombre;

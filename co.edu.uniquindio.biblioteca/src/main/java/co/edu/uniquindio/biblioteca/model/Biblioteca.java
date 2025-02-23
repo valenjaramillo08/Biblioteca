@@ -73,6 +73,76 @@ public class Biblioteca {
         this.nombre = nombre;
     }
 
+    public boolean maximoPrestamoMiembro(Miembro miembro){
+        boolean bandera=true;
+
+        for (Miembro miembro1 : listaMiembros){
+            if(miembro1.getListaPrestamos().size()>=5){
+                bandera=false;
+            }
+            else{
+                bandera=true;
+            }
+        }
+        return bandera;
+    }
+
+    public String miembroConMasPrestamos(){
+        String nombreComun="";
+        int contadorPrincipal=0;
+
+        for (Prestamo prestamo: listaPrestamos) {
+            int contador=0;
+            String nombreAnalisis = prestamo.getMiembro().getNombre();
+
+            for (Prestamo prestamo2 : listaPrestamos) {
+                if(prestamo2.getMiembro().getNombre().equals(nombreAnalisis)){
+                    contador ++;
+                }
+
+            }
+            if(contadorPrincipal < contador){
+                nombreComun= nombreAnalisis;
+                contadorPrincipal= contador;
+            }
+
+        }
+        return nombreComun;
+    }
+
+    public void agregarPrestamo(Prestamo prestamo) {
+        if (!verificarPrestamo(prestamo.getCodigoPrestamo())) {
+            listaPrestamos.add(prestamo);
+        }
+    }
+
+    public boolean verificarPrestamo(String codigoPrestamo) {
+        boolean centinela = false;
+        for (Prestamo prestamo: listaPrestamos) {
+            if (prestamo.getCodigoPrestamo().equals(codigoPrestamo)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+
+    public void agregarMiembo(Miembro miembro) {
+        if (!verificarMiembro(miembro.getIdMiembro())){
+            listaMiembros.add(miembro);
+        }
+    }
+
+    public boolean verificarMiembro(String idMiembro) {
+        boolean centinela = false;
+        for (Miembro miembro: listaMiembros) {
+            if (miembro.getIdMiembro().equals(idMiembro)) {
+                centinela = true;
+            }
+        }
+        return centinela;
+    }
+
+
     public String getNombre() {
         return nombre;
     }

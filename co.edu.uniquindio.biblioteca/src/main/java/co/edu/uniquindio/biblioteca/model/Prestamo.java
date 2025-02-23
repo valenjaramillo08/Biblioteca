@@ -8,6 +8,8 @@ public class Prestamo {
     public Miembro miembro;
     public Libro libro;
     public Bibliotecario bibliotecario;
+    public String codigoPrestamo;
+
 
     public Prestamo(){}
 
@@ -51,13 +53,11 @@ public class Prestamo {
         this.bibliotecario = bibliotecario;
     }
 
-    
+    public String getCodigoPrestamo() {
+        return codigoPrestamo;
+    }
 
-
-
-
-
-
-
-
+    public void setCodigoPrestamo(String codigoPrestamo) {
+        this.codigoPrestamo = codigoPrestamo;
+    }
 }
