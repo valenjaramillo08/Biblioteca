@@ -7,7 +7,9 @@ public class Prestamo {
     public LocalDate fechaDevolucion;
     public Miembro miembro;
     public Libro libro;
+    public Bibliotecario bibliotecario;
     public String codigoPrestamo;
+
 
     public Prestamo(){}
 
@@ -41,6 +43,14 @@ public class Prestamo {
 
     public void setLibro(Libro libro) {
         this.libro = libro;
+    }
+
+    public Bibliotecario getBibliotecario() {
+        return bibliotecario;
+    }
+
+    public void setBibliotecario(Bibliotecario bibliotecario) {
+        this.bibliotecario = bibliotecario;
     }
 
     public String getCodigoPrestamo() {
