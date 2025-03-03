@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Biblioteca {
-    public String nombre;
     public List<Empleado> listaEmpleados = new ArrayList<>();
-    public List<Miembro> listaMiembros = new ArrayList<>();
+    public List<Usuario> listaUsuarios = new ArrayList<>();
     public List<Bibliotecario> listaBibliotecarios = new ArrayList<>();
     public List<Libro> listaLibros = new ArrayList<>();
     public List<Prestamo> listaPrestamos = new ArrayList<>();
@@ -54,7 +53,7 @@ public class Biblioteca {
         return centinela;
     }
 
-    public int cantidadPrestamo (String nombre){
+    public int cantidadPrestamos (String nombre){
         int contador = 0;
 
     for (Prestamo prestamo : listaPrestamos) {
@@ -69,14 +68,14 @@ public class Biblioteca {
 }
 
 
-    public Biblioteca(String nombre){
-        this.nombre = nombre;
+    public Biblioteca(){
+
     }
 
-    public boolean maximoPrestamoMiembro(Miembro miembro){
+    public boolean maximoPrestamoMiembro(Usuario usuario){
         boolean bandera=true;
 
-        for (Miembro miembro1 : listaMiembros){
+        for (Usuario miembro1 : listaUsuarios){
             if(miembro1.getListaPrestamos().size()>=5){
                 bandera=false;
             }
@@ -93,10 +92,10 @@ public class Biblioteca {
 
         for (Prestamo prestamo: listaPrestamos) {
             int contador=0;
-            String nombreAnalisis = prestamo.getMiembro().getNombre();
+            String nombreAnalisis = prestamo.getUsuario().getNombre();
 
             for (Prestamo prestamo2 : listaPrestamos) {
-                if(prestamo2.getMiembro().getNombre().equals(nombreAnalisis)){
+                if(prestamo2.getUsuario().getNombre().equals(nombreAnalisis)){
                     contador ++;
                 }
 
@@ -126,29 +125,20 @@ public class Biblioteca {
         return centinela;
     }
 
-    public void agregarMiembo(Miembro miembro) {
-        if (!verificarMiembro(miembro.getIdMiembro())){
-            listaMiembros.add(miembro);
+    public void agregarUsuario(Usuario usuario) {
+        if (!verificarUsuario(usuario.getIdUsuario())){
+            listaUsuarios.add(usuario);
         }
     }
 
-    public boolean verificarMiembro(String idMiembro) {
+    public boolean verificarUsuario(String idUsuario) {
         boolean centinela = false;
-        for (Miembro miembro: listaMiembros) {
-            if (miembro.getIdMiembro().equals(idMiembro)) {
+        for (Usuario usuario: listaUsuarios) {
+            if (usuario.getIdUsuario().equals(idUsuario)) {
                 centinela = true;
             }
         }
         return centinela;
-    }
-
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public List<Empleado> getListaEmpleados() {
@@ -159,12 +149,12 @@ public class Biblioteca {
         this.listaEmpleados = listaEmpleados;
     }
 
-    public List<Miembro> getListaMiembros() {
-        return listaMiembros;
+    public List<Usuario> getListaMiembros() {
+        return listaUsuarios;
     }
 
-    public void setListaMiembros(List<Miembro> listaMiembros) {
-        this.listaMiembros = listaMiembros;
+    public void setListaMiembros(List<Usuario> listaMiembros) {
+        this.listaUsuarios = listaMiembros;
     }
 
     public List<Bibliotecario> getListaBibliotecarios() {

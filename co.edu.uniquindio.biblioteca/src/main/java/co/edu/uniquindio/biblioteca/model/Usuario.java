@@ -3,15 +3,15 @@ package co.edu.uniquindio.biblioteca.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Miembro {
+public class Usuario {
     public String nombre;
-    public String idMiembro;
+    public String idUsuario;
     public List<Prestamo> listaPrestamos = new ArrayList<>();
 
-    public Miembro() {}
-    public Miembro(String nombre, String idMiembro) {
+    public Usuario() {}
+    public Usuario(String nombre, String idUsuario) {
         this.nombre = nombre;
-        this.idMiembro = idMiembro;
+        this.idUsuario = idUsuario;
 
     }
     public void agregarPrestamo(Prestamo prestamo) {
@@ -38,12 +38,12 @@ public class Miembro {
         this.nombre = nombre;
     }
 
-    public String getIdMiembro() {
-        return idMiembro;
+    public String getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdMiembro(String idMiembro) {
-        this.idMiembro = idMiembro;
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public List<Prestamo> getListaPrestamos() {

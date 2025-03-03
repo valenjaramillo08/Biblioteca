@@ -5,13 +5,14 @@ import java.time.LocalDate;
 public class Prestamo {
     public LocalDate fechaPrestamo;
     public LocalDate fechaDevolucion;
-    public Miembro miembro;
+    public Usuario usuario;
     public Libro libro;
     public Bibliotecario bibliotecario;
     public String codigoPrestamo;
 
 
     public Prestamo(){}
+
 
     public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
@@ -29,12 +30,12 @@ public class Prestamo {
         this.fechaDevolucion = fechaDevolucion;
     }
 
-    public Miembro getMiembro() {
-        return miembro;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setMiembro(Miembro miembro) {
-        this.miembro = miembro;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Libro getLibro() {

@@ -7,7 +7,8 @@ public class ModelFactory implements IModelFactoryServices {
     private static ModelFactory modelFactory;
     private Biblioteca biblioteca;
 
-    private ModelFactory(){
+    public ModelFactory(){
+
         inicializarDatos();
     }
 
@@ -22,15 +23,28 @@ public class ModelFactory implements IModelFactoryServices {
         biblioteca = new Biblioteca();
         Libro libro1 = new Libro();
         libro1.setTitulo("Lagañas");
-        Miembro miembro1 = new Miembro();
-        miembro1.setNombre("Laura");
+        Usuario usuario1 = new Usuario();
+        usuario1.setNombre("Laura");
         Empleado empleado1 = new Empleado();
         empleado1.setNombre("Juan");
-        Bibliotecario bibliotecario1 = new Bibliotecario();
+        Bibliotecario bibliotecario1 = new Bibliotecario("Mateo", "1109778");
         bibliotecario1.setNombre("Bibliotecario");
         Prestamo prestamo1 = new Prestamo();
+        prestamo1.setCodigoPrestamo("123CFG");
 
 
     }
+
+
+    @Override
+    public void gestionarItem() {
+
+    }
+
+    @Override
+    public void gestionarPrestamos() {
+
+    }
+
 
 }
