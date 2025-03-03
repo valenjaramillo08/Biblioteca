@@ -47,4 +47,18 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
 
+    @Override
+    public String miembroConMasPrestamos() {
+        return "";
+    }
+
+    @Override
+    public String maximoPrestamoMiembro() {
+        return "";
+    }
+
+    @Override
+    public int cantidadPrestamos() {
+        return 0;
+    }
 }
