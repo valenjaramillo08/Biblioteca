@@ -46,4 +46,14 @@ public class Libro {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "autor='" + autor + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", isbn='" + isbn + '\'' +
+                ", estado=" + estado +
+                '}';
+    }
 }

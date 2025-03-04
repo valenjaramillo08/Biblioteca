@@ -78,4 +78,16 @@ public class Prestamo {
     public void setCodigoPrestamo(String codigoPrestamo) {
         this.codigoPrestamo = codigoPrestamo;
     }
+
+    @Override
+    public String toString() {
+        return "Prestamo{" +
+                "fechaPrestamo=" + fechaPrestamo +
+                ", fechaDevolucion=" + fechaDevolucion +
+                ", usuario=" + usuario +
+                ", libro=" + libro +
+                ", bibliotecario=" + bibliotecario +
+                ", codigoPrestamo='" + codigoPrestamo + '\'' +
+                '}';
+    }
 }

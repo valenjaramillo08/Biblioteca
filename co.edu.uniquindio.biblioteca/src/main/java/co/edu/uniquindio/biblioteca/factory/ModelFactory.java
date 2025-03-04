@@ -41,6 +41,13 @@ public class ModelFactory implements IModelFactoryServices {
         libro3.setAutor("tina");
         libro3.setEstado(true);
 
+        Libro libro4 = new Libro();
+        libro4.setTitulo("Quindio");
+        libro4.setIsbn("978");
+        libro4.setAutor("mandy");
+        libro4.setEstado(false);
+
+
         Usuario usuario1 = new Usuario();
         usuario1.setNombre("Laura");
         usuario1.setIdUsuario("3322");
@@ -53,17 +60,6 @@ public class ModelFactory implements IModelFactoryServices {
         usuario3.setNombre("Luiz");
         usuario3.setIdUsuario("3324");
 
-        Empleado empleado1 = new Empleado();
-        empleado1.setNombre("Juan");
-        empleado1.setIdEmpleado("4455");
-
-        Empleado empleado2 = new Empleado();
-        empleado2.setNombre("Sebastian");
-        empleado2.setIdEmpleado("5555");
-
-        Empleado empleado3 = new Empleado();
-        empleado3.setNombre("Maria");
-        empleado3.setIdEmpleado("5556");
 
         Bibliotecario bibliotecario1 = new Bibliotecario("Mateo", "1109778");
         Bibliotecario bibliotecario2 = new Bibliotecario("Jhon", "1100000");
@@ -99,15 +95,29 @@ public class ModelFactory implements IModelFactoryServices {
         prestamo4.setLibro(libro1);
         prestamo4.setBibliotecario(bibliotecario2);
 
+        biblioteca.agregarLibro(libro1);
+        biblioteca.agregarLibro(libro2);
+        biblioteca.agregarLibro(libro3);
+        biblioteca.agregarLibro(libro4);
+        biblioteca.agregarBibliotecario(bibliotecario1);
+        biblioteca.agregarBibliotecario(bibliotecario2);
+        biblioteca.agregarPrestamo(prestamo1);
+        biblioteca.agregarPrestamo(prestamo2);
+        biblioteca.agregarPrestamo(prestamo3);
+        biblioteca.agregarPrestamo(prestamo4);
+        biblioteca.agregarUsuario(usuario1);
+        biblioteca.agregarUsuario(usuario2);
+        biblioteca.agregarUsuario(usuario3);
 
-        //usuario1.agregarPrestamo(prestamo4);
-        //usuario1.agregarPrestamo(prestamo2);
-        //usuario3.agregarPrestamo(prestamo3);
+
 
     }
 
 
-
+    @Override
+    public String datosLibro(String isbn) {
+        return biblioteca.datosLibro(isbn);
+    }
 
     @Override
     public String miembroConMasPrestamos() {
@@ -115,12 +125,9 @@ public class ModelFactory implements IModelFactoryServices {
     }
 
     @Override
-    public String maximoPrestamoMiembro() {
-        return "";
+    public String prestamoLibro(String isbn) {
+        return biblioteca.prestamoLibro(isbn);
     }
 
-    @Override
-    public int cantidadPrestamos() {
-        return 0;
-    }
+
 }
