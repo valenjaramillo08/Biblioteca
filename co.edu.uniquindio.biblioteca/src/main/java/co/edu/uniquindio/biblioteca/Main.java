@@ -6,12 +6,12 @@ import co.edu.uniquindio.biblioteca.model.Biblioteca;
 public class Main {
     public static void main(String[] args) {
         ModelFactory modelFactory= ModelFactory.getInstance();
-        gestionarItem(modelFactory);
-        gestionarPrestamos(modelFactory);
+        miembroConMasPrestamos(modelFactory);
+
     }
-    private static void gestionarItem(ModelFactory modelFactory) {
-            String isbn= "0009RD";
-            String resultado= modelFactory.gestionarItem(isbn);
-            validarResultado(resultado,)
+    public static void miembroConMasPrestamos(ModelFactory modelFactory) {
+        String resultado= modelFactory.miembroConMasPrestamos();
+        System.out.println(resultado);
     }
+
 }
