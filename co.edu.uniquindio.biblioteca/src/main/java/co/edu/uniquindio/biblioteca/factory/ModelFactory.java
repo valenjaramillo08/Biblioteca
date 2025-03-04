@@ -109,8 +109,7 @@ public class ModelFactory implements IModelFactoryServices {
         biblioteca.agregarUsuario(usuario2);
         biblioteca.agregarUsuario(usuario3);
 
-
-
+        biblioteca.eliminarLibro(libro4);
     }
 
 

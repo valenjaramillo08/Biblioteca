@@ -1,6 +1,7 @@
 package co.edu.uniquindio.biblioteca.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Biblioteca {
@@ -42,6 +43,21 @@ public class Biblioteca {
             listaBibliotecarios.add(bibliotecario);
         }
     }
+
+    public boolean eliminarLibro(Libro libro) {
+        boolean eliminado = false;
+        Iterator<Libro> iterador = listaLibros.iterator();
+
+        while (iterador.hasNext()) {
+            Libro libroDel = iterador.next();
+            if (libroDel.getIsbn().equals(libro.getIsbn())) {
+                iterador.remove(); // Elimina el elemento actual del iterador y de la lista
+                eliminado = true;
+            }
+        }
+        return eliminado;
+    }
+
 
     public boolean verificarBibliotecario(String cedula) {
         boolean centinela = false;
