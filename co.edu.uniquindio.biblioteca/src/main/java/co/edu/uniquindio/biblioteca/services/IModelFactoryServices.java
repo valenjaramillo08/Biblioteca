@@ -1,10 +1,11 @@
 package co.edu.uniquindio.biblioteca.services;
 
 import co.edu.uniquindio.biblioteca.model.Libro;
+import co.edu.uniquindio.biblioteca.model.Usuario;
 
 public interface IModelFactoryServices {
+   String datosLibro(String codigo);
    String miembroConMasPrestamos();
-   String maximoPrestamoMiembro();
-   int cantidadPrestamos();
+   String prestamoLibro(String isbn);
 
 }

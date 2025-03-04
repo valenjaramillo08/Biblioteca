@@ -13,7 +13,24 @@ public class Prestamo {
 
     public Prestamo(){}
 
+    public Prestamo(LocalDate fechaPrestamo, LocalDate fechaDevolucion, Usuario usuario, Libro libro, Bibliotecario bibliotecario, String codigoPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+        this.fechaDevolucion = fechaDevolucion;
+        this.usuario = usuario;
+        this.libro = libro;
+        this.bibliotecario = bibliotecario;
+        this.codigoPrestamo = codigoPrestamo;
 
+    }
+
+    public void agregarLibro(Libro libroPrestamo) {
+        if (libroPrestamo.getIsbn() != null) {} {
+            libro.setTitulo(libroPrestamo.getTitulo());
+            libro.setAutor(libroPrestamo.getAutor());
+            libro.setIsbn(libroPrestamo.getIsbn());
+            libro.setEstado(false);
+        }
+    }
     public LocalDate getFechaPrestamo() {
         return fechaPrestamo;
     }
@@ -60,5 +77,17 @@ public class Prestamo {
 
     public void setCodigoPrestamo(String codigoPrestamo) {
         this.codigoPrestamo = codigoPrestamo;
+    }
+
+    @Override
+    public String toString() {
+        return "Prestamo{" +
+                "fechaPrestamo=" + fechaPrestamo +
+                ", fechaDevolucion=" + fechaDevolucion +
+                ", usuario=" + usuario +
+                ", libro=" + libro +
+                ", bibliotecario=" + bibliotecario +
+                ", codigoPrestamo='" + codigoPrestamo + '\'' +
+                '}';
     }
 }

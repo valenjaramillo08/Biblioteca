@@ -53,4 +53,13 @@ public class Usuario {
     public void setListaPrestamos(List<Prestamo> listaPrestamos) {
         this.listaPrestamos = listaPrestamos;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", idUsuario='" + idUsuario + '\'' +
+                ", listaPrestamos=" + listaPrestamos +
+                '}';
+    }
 }

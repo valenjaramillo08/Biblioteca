@@ -24,14 +24,22 @@ public class Bibliotecario extends Empleado implements IGestionInventario {
         this.listaPrestamos = listaPrestamos;
     }
 
+    @Override
+    public String toString() {
+        return "Bibliotecario{" +
+                "listaPrestamos=" + listaPrestamos +
+                '}';
+    }
 
     @Override
     public void gestionarItem(Libro libro) {
+        System.out.println("Iniciando gestion del libro");
 
     }
 
     @Override
     public void gestionarPrestamos() {
+        System.out.println("Iniciando gestion del prestamo");
 
     }
 }

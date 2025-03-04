@@ -1,6 +1,7 @@
 package co.edu.uniquindio.biblioteca.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Biblioteca {
@@ -11,11 +12,27 @@ public class Biblioteca {
     public List<Prestamo> listaPrestamos = new ArrayList<>();
 
 
-    public String datosLibro (String codigo){
+
+    public Biblioteca(){
+
+    }
+
+    public String prestamoLibro(String isbn) {
+        String mensaje="";
+        for (Prestamo prestamo : listaPrestamos) {
+            if (prestamo.getLibro().equals(isbn)) {
+                mensaje= "El libro esta disponible";
+            }
+        }
+        mensaje ="Libro no disponible";
+        return mensaje;
+    }
+
+    public String datosLibro (String isbn){
         for (Libro libro: listaLibros){
     
-            if (libro.getIsbn().equals(codigo)){
-                return libro.toString(); 
+            if (libro.getIsbn().equals(isbn)){
+                System.out.println(libro.toString());
             }
         }
         return "El préstamo no se encontro";
@@ -26,6 +43,21 @@ public class Biblioteca {
             listaBibliotecarios.add(bibliotecario);
         }
     }
+
+    public boolean eliminarLibro(Libro libro) {
+        boolean eliminado = false;
+        Iterator<Libro> iterador = listaLibros.iterator();
+
+        while (iterador.hasNext()) {
+            Libro libroDel = iterador.next();
+            if (libroDel.getIsbn().equals(libro.getIsbn())) {
+                iterador.remove(); // Elimina el elemento actual del iterador y de la lista
+                eliminado = true;
+            }
+        }
+        return eliminado;
+    }
+
 
     public boolean verificarBibliotecario(String cedula) {
         boolean centinela = false;
@@ -53,38 +85,6 @@ public class Biblioteca {
         return centinela;
     }
 
-    public int cantidadPrestamos (String nombre){
-        int contador = 0;
-
-    for (Prestamo prestamo : listaPrestamos) {
-        if (prestamo.getBibliotecario().toString().equals(nombre)) {
-            contador++;
-        }
-    }
-    System.out.println("Los préstamos realizados por el bibliotecario" +nombre+ "son:" + contador);
-
-    return contador; 
-
-}
-
-
-    public Biblioteca(){
-
-    }
-
-    public boolean maximoPrestamoMiembro(Usuario usuario){
-        boolean bandera=true;
-
-        for (Usuario miembro1 : listaUsuarios){
-            if(miembro1.getListaPrestamos().size()>=5){
-                bandera=false;
-            }
-            else{
-                bandera=true;
-            }
-        }
-        return bandera;
-    }
 
     public String miembroConMasPrestamos(){
         String nombreComun="";
@@ -179,6 +179,17 @@ public class Biblioteca {
 
     public void setListaPrestamos(List<Prestamo> listaPrestamos) {
         this.listaPrestamos = listaPrestamos;
+    }
+
+    @Override
+    public String toString() {
+        return "Biblioteca{" +
+                "listaEmpleados=" + listaEmpleados +
+                ", listaUsuarios=" + listaUsuarios +
+                ", listaBibliotecarios=" + listaBibliotecarios +
+                ", listaLibros=" + listaLibros +
+                ", listaPrestamos=" + listaPrestamos +
+                '}';
     }
 }
 
